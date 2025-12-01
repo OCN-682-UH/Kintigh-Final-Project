@@ -59,6 +59,51 @@ The following environmental predictors can be visualized:
 These variables are used in both spatial maps and environmental response plots.
 
 ---
+## Data Dictionary
+
+| Column Name              | Type        | Description                                                                                   | Units / Notes |
+|--------------------------|-------------|-----------------------------------------------------------------------------------------------|---------------|
+| `date`                   | Date        | Date of the longline set (converted from set_begin_datetime).                                | YYYY-MM-DD    |
+| `year`                   | Numeric     | Year of the longline set.                                                                    |               |
+| `month`                  | Factor      | Month of the longline set (abbreviated).                                                     | Jan–Dec       |
+| `set_type`               | Character   | Longline type: **DSLL** (deep-set) or **SSLL** (shallow-set).                                |               |
+| `species`                | Character   | Scientific name of species caught.                                                           |               |
+| `lon_bin`                | Numeric     | 5° longitudinal bin ID (0–360).                                                              | degrees       |
+| `lat_bin`                | Numeric     | 5° latitudinal bin ID.                                                                       | degrees       |
+| `lon_ctr`                | Numeric     | Longitude of bin center.                                                                     | degrees       |
+| `lat_ctr`                | Numeric     | Latitude of bin center.                                                                      | degrees       |
+| `n_perm`                 | Integer     | Number of unique permits in the bin (used for confidentiality filtering).                    | ≥3 retained   |
+| `catch_count`            | Numeric     | Total number of individuals caught of the selected species for that set/bin.                 | count         |
+| `num_hks_set`            | Integer     | Number of hooks deployed for that longline set.                                              | hooks         |
+| `cpue`                   | Numeric     | Catch per unit effort: `(catch_count / num_hks_set) * 1000`.                                 | fish / 1000 hooks |
+| `sst`                    | Numeric     | Sea surface temperature.                                                                     | °C            |
+| `sss`                    | Numeric     | Sea surface salinity.                                                                        | PSU           |
+| `ssh`                    | Numeric     | Sea surface height anomaly or absolute SSH depending on source.                              | meters        |
+| `mld`                    | Numeric     | Mixed layer depth.                                                                           | meters        |
+| `chl_cop`                | Numeric     | Chlorophyll-a concentration from Copernicus.                                                 | mg/m³         |
+| `u`                      | Numeric     | Zonal (east–west) surface current component.                                                 | m/s           |
+| `v`                      | Numeric     | Meridional (north–south) surface current component.                                          | m/s           |
+| `rugosity`               | Numeric     | Seafloor roughness index from bathymetry.                                                    | unitless      |
+| `current_speed`          | Numeric     | Total surface current magnitude: √(u² + v²).                                                 | m/s           |
+| `lunar_rad`              | Numeric     | Lunar illumination at time of set (0–?? scale based on model).                              | unitless      |
+| `ssh_sd`                 | Numeric     | Daily standard deviation of SSH around set location (environmental variability metric).      | meters        |
+| `sss_sd`                 | Numeric     | Standard deviation of SSS.                                                                   | PSU           |
+| `sst_sd`                 | Numeric     | Standard deviation of SST.                                                                   | °C            |
+| `oxy300`                 | Numeric     | Dissolved oxygen at **300 m** depth.                                                         | µmol/kg       |
+| `oxy150`                 | Numeric     | Dissolved oxygen at **150 m** depth.                                                         | µmol/kg       |
+| `temp300`                | Numeric     | Temperature at **300 m** depth.                                                              | °C            |
+| `temp150`                | Numeric     | Temperature at **150 m** depth.                                                              | °C            |
+| `sla`                    | Numeric     | Sea level anomaly.                                                                           | meters        |
+| `o2`                     | Numeric     | Depth-averaged or subsurface O₂ (depending on pairing script).                               | µmol/kg       |
+| `hks_per_flt`            | Integer     | Hooks per float (gear configuration variable).                                               | hooks/float   |
+| `fltln_len`              | Numeric     | Float line length.                                                                           | meters        |
+| `brnchln_len`            | Numeric     | Branchline length.                                                                           | meters        |
+| `bait_code_val`          | Character   | Type of bait used (categorical).                                                             | categorical   |
+| `brnchln_mat_code_val`   | Character   | Branchline material (e.g., monofilament, wire).                                              | categorical   |
+| `ldr_mat_code_val`       | Character   | Leader material (e.g., wire vs mono).                                                        | categorical   |
+
+
+---
 
 ## Application Features
 
