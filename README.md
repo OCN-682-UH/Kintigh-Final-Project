@@ -9,7 +9,7 @@
 
 ## Project Description
 
-This project develops an interactive Shiny application that visualizes how environmental drivers shape multispecies catch-per-unit-effort (CPUE) patterns in the Hawaiʻi deep set longline fishery. Using observer data paired with oceanographic variables, the app allows users to explore how CPUE varies across space, time, and environmental gradients for bigeye tuna and multiple billfish species.
+This project develops an interactive Shiny application that visualizes how environmental drivers shape multispecies catch-per-unit-effort (CPUE) patterns in the Hawaiʻi longline fishery. Using observer data paired with oceanographic variables, the app allows users to explore how CPUE varies across space, time, and environmental gradients for bigeye tuna and multiple billfish species.
 
 The data were aggregated into 5×5° spatial bins to meet confidentiality requirements and paired with daily satellite- and model-derived environmental predictors.
 
@@ -17,7 +17,7 @@ The data were aggregated into 5×5° spatial bins to meet confidentiality requir
 
 ## Purpose
 
-**The purpose of this project is to build an interactive Shiny application that visualizes how environmental conditions shape multispecies CPUE patterns in the Hawaiʻi deep set longline fishery.**
+**The purpose of this project is to build an interactive Shiny application that visualizes how environmental conditions shape multispecies CPUE patterns in the Hawaiʻi longline fishery.**
 
 This tool supports exploratory data analysis, hypothesis generation, spatial pattern recognition, and visual interpretation of key environmental relationships.
 
@@ -148,7 +148,7 @@ A long-term temporal view that reveals:
 
 ## Data Summary
 
-- The dataset contains over **250,000 observations** spanning multiple species and years (2005–2024) from the NOAA observer program.  
+- The dataset contains over **250,000 observations** spanning multiple species and years (2005–2024) from the NOAA observer program for deep and shallow set.  
 - Records include set-level information: date, gear configuration, spatial coordinates, hook count, and catch.  
 - All environmental variables were paired to longline sets using **daily averaged satellite- and model-derived rasters** from copernicus marine.  
 - Data were aggregated into **5×5° spatial bins**, each with calculated bin centers (`lon_ctr`, `lat_ctr`).  
