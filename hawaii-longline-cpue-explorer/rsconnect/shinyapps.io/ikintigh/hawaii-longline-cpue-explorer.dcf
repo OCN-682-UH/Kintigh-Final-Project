@@ -1,0 +1,12 @@
+name: hawaii-longline-cpue-explorer
+title: hawaii-longline-cpue-explorer
+username: ikintigh
+account: ikintigh
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16208879
+bundleId: 11258489
+url: https://ikintigh.shinyapps.io/hawaii-longline-cpue-explorer/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

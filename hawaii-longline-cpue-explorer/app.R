@@ -11,6 +11,7 @@ library(tidyverse)
 library(viridis)
 library(lubridate)
 library(bslib)
+library(rsconnect)
 
 
 # --------- Load binned, cleaned longline data (all species) --------------
@@ -75,6 +76,15 @@ ui <- fluidPage(
   sidebarLayout( # sidebar
     sidebarPanel( 
       width = 3,
+      
+      # Toggle for deep-set vs shallow-set longlines
+      radioButtons(
+        inputId = "set_type_select",
+        label = "Select set type:",
+        choices = c("Deep-set (DSLL)" = "DSLL",
+                    "Shallow-set (SSLL)" = "SSLL"),
+        selected = "DSLL"
+      ),
       
       # Species drop down to allow multi-species selection
       selectInput(
@@ -221,6 +231,7 @@ server <- function(input, output, session) {
       
       filter( # Keep only rows for the selected species
         species == input$species_select,
+        set_type == input$set_type_select,  # filter by DSLL / SSLL
         year == input$env_map_year # Keep only rows for the selected year
       )
     
@@ -262,7 +273,7 @@ server <- function(input, output, session) {
         color = "white",
         linewidth = 0.3
       ) +
-      scale_fill_viridis(option = "C", name = env_label) +
+      scale_fill_viridis(option = "C", name = env_label, direction = -1) + # make sure scale goes fom dark to light
       coord_equal() +
       labs(
         title = paste0(
@@ -288,7 +299,7 @@ server <- function(input, output, session) {
         color = "white",
         linewidth = 0.3
       ) +
-      scale_fill_viridis(option = "A", name = "CPUE") +
+      scale_fill_viridis(option = "A", name = "CPUE", direction = -1) + # make sure scale goes fom dark to light
       coord_equal() +
       labs(
         title = paste0(
@@ -344,7 +355,7 @@ server <- function(input, output, session) {
     # Plot heatmap with midpoints on axes
     ggplot(df_heat, aes(x = x_mid, y = y_mid, fill = mean_cpue)) +
       geom_tile(color = "white", linewidth = 0.25) +
-      scale_fill_viridis(option = "A", name = "Mean CPUE") +
+      scale_fill_viridis(option = "A", name = "Mean CPUE", direction = -1) + # make sure scale goes fom dark to light
       labs(
         title = paste0("CPUE Surface for ", input$species_select, ": ", x_label, " vs ", y_label),
         x = x_label,
@@ -363,7 +374,8 @@ server <- function(input, output, session) {
   output$year_month_heatmap <- renderPlot({
     # Filter dataset by selected species only
     df <- LL_Data_df %>%
-      filter(species == input$species_select) %>%
+      filter(species == input$species_select, # filter by species
+             set_type == input$set_type_select) %>% # filter by deep/shallow set
       group_by(year, month) %>%
       summarise(mean_cpue = mean(cpue, na.rm = TRUE), .groups = "drop")
     
@@ -377,7 +389,7 @@ server <- function(input, output, session) {
       )
     ) +
       geom_tile(color = "white", linewidth = 0.3) +
-      scale_fill_viridis(option = "A", name = "Mean CPUE") +
+      scale_fill_viridis(option = "A", name = "Mean CPUE", direction = -1) + # make sure scale goes fom dark to light
       labs(
         title = paste0("Mean CPUE by Year and Month for ", input$species_select),
         x = "Year",
