@@ -1,6 +1,6 @@
 # Kintigh-Final-Project
 
-# Hawaiʻi Longline Multispecies CPUE Explorer  
+# [Hawaiʻi Longline Multispecies CPUE Explorer](https://ikintigh.shinyapps.io/hawaii-longline-cpue-explorer/)  
 ### Final Project – OCN 682 
 **Created by: Isabella Kintigh**  
 **Date: November 2025**
@@ -116,11 +116,8 @@ A long-term temporal view that reveals:
 
 If you have questions about this project or would like to learn more: 
 
-**Isabella Kintigh**
-
-Graduate Student, Suca Lab, Biological Oceanography
-
-University of Hawaiʻi at Mānoa  
-
+**Isabella Kintigh**  
+Graduate Student, Suca Lab, Biological Oceanography  
+University of Hawaiʻi at Mānoa    
 Email: *idavila@hawaii.edu*  
 
